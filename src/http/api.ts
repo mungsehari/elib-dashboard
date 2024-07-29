@@ -12,3 +12,7 @@ const api=axios.create(
 export const login=async (data:{email:string,password:string}) => {
     return api.post('/auth/signing',data)
 }
+
+export const register=async (data:{name:string,email:string,password:string}) => {
+    return api.post('/auth/signup',data)
+}
