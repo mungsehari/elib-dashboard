@@ -33,10 +33,16 @@ import {
 import useTokenStore from "../store";
 
 const DashboardLayout = () => {
-  const token = useTokenStore((store) => store.token);
+  const { token, setToken } = useTokenStore((store) => store);
+
   if (!token) {
     return <Navigate to={"/auth/login"} replace />;
   }
+
+  const logout = () => {
+    console.log("logging out");
+    setToken("");
+  };
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
@@ -192,7 +198,11 @@ const DashboardLayout = () => {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Button onClick={logout} variant={"link"}>
+                  Logout
+                </Button>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
