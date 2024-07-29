@@ -5,6 +5,7 @@ import RegisterPage from "./pages/auth/register-page";
 import DashboardLayout from "./layouts/dashboard-layout";
 import BooksPages from "./pages/books-page";
 import AuthLayout from "./layouts/auth-layout";
+import CreateBook from "./pages/create-book";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "books",
         element: <BooksPages />,
+      },
+      {
+        path: "books/create",
+        element: <CreateBook />,
       },
     ],
   },
